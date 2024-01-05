@@ -4,8 +4,9 @@ const fs = require("fs");
 const path = require("path");
 const matter = require("gray-matter");
 
-const projectsPath = path.join(__dirname, "../projects");
+
 // Get all projects
+const projectsPath = path.join(__dirname, "..", "projects");
 router.get("/:projectId", (req, res) => {
   const projectId = req.params.projectId;
   try {
