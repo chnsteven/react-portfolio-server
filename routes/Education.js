@@ -3,11 +3,10 @@ const router = express.Router();
 const fs = require("fs");
 const path = require("path");
 const matter = require("gray-matter");
-
-const eduPath = path.join(__dirname, "../education");
 router.get("/", (req, res) => {
   try {
-    const filePath = path.join(eduPath || process.env.EDU_PATH, "education.md");
+    const eduPath = process.env.EDU_PATH || "education";
+    const filePath = path.join(__dirname, "..", eduPath, "education.md");
     const fileContent = fs.readFileSync(filePath, "utf8");
     const { data, content } = matter(fileContent);
     res.json({ frontMatter: data, content: content });
